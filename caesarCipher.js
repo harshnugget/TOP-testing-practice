@@ -1,34 +1,38 @@
 const caesarCipher = (() => {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-  function isUpperCase(letter) {
-    return letter === letter.toUpperCase();
+  function isUpperCase(char) {
+    return char === char.toUpperCase();
   }
 
   return (string, shift) => {
     let encryptedString = "";
 
-    // Iterate through each letter of the provided string
+    // Iterate through each character of the provided stnrig
     for (let i = 0; i < string.length; i++) {
-      // Get the corresponding index of the current letter from "alphabet"
-      let index = alphabet.indexOf(string[i].toLowerCase());
+      let char = string[i];
 
-      // Get index after shifting the current letter
-      let shiftedIndex = (index + (alphabet.length + shift)) % alphabet.length;
+      // Get the corresponding index of the current character from "alphabet"
+      let index = alphabet.indexOf(char.toLowerCase());
 
-      // Retrieve the corresponding letter from "alphabet" after the shift
-      let letter = isUpperCase(string[i])
-        ? alphabet[shiftedIndex].toUpperCase()
-        : alphabet[shiftedIndex];
+      // If char is found in alphabet, perform shift
+      if (index >= 0) {
+        // Get index after shifting the current character
+        let shiftedIndex =
+          (index + (alphabet.length + shift)) % alphabet.length;
 
-      // Append the letter to the encrypted string
-      encryptedString += letter;
+        // Retrieve the corresponding character from "alphabet" after the shift
+        char = isUpperCase(char)
+          ? alphabet[shiftedIndex].toUpperCase()
+          : alphabet[shiftedIndex];
+      }
+
+      // Append the character to the encrypted string
+      encryptedString += char;
     }
 
     return encryptedString;
   };
 })();
-
-caesarCipher("abc", -3);
 
 export default caesarCipher;

@@ -14,4 +14,9 @@ describe("Caesar cipher", () => {
     expect(caesarCipher("abc", -3)).toBe("xyz");
     expect(caesarCipher("XYZ", -5)).toBe("STU");
   });
+
+  test("Test for punctuation or additional characters", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+    expect(caesarCipher("12345", 3)).toBe("12345");
+  });
 });
