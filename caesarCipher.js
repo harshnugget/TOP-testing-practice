@@ -14,7 +14,7 @@ const caesarCipher = (() => {
       let index = alphabet.indexOf(string[i].toLowerCase());
 
       // Get index after shifting the current letter
-      let shiftedIndex = (index + shift) % alphabet.length;
+      let shiftedIndex = (index + (alphabet.length + shift)) % alphabet.length;
 
       // Retrieve the corresponding letter from "alphabet" after the shift
       let letter = isUpperCase(string[i])
@@ -28,5 +28,7 @@ const caesarCipher = (() => {
     return encryptedString;
   };
 })();
+
+caesarCipher("abc", -3);
 
 export default caesarCipher;

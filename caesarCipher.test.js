@@ -9,4 +9,9 @@ describe("Caesar cipher", () => {
     expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
     expect(caesarCipher("HelloWorld", 13)).toBe("UryybJbeyq");
   });
+
+  test("Test negative shifting", () => {
+    expect(caesarCipher("abc", -3)).toBe("xyz");
+    expect(caesarCipher("XYZ", -5)).toBe("STU");
+  });
 });
